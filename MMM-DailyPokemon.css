@@ -1,106 +1,103 @@
-/*
- *
- * MMM-DailyPokemon
- *
- *
- * MIT Licensed.
- *
- * Custom here your css module
- *
- */
-
 @font-face {
-	font-family: pokegb;
-	src: url(fonts/pokemon_font.ttf);
-	}
+  font-family: pokegb;
+  src: url(fonts/pokemon_font.ttf);
+}
 
+/* Main card */
 #poke-wrapper {
-	margin-left: auto;
-	margin-right: auto;
-	/*position: relative;
-	bottom: 30px;
-	top: 0px;*/
+  margin: 0 auto;
+  padding: 10px;
+  max-width: 600px;
+  box-sizing: border-box;
 }
 
-#flex-wrapper div {
-	width: 100%;
-	height: 175px;
-}
-
+/* Row layout */
 #flex-wrapper {
-	display: flex;
-	align-content: center;
+  display: flex;
+  align-items: center;     /* vertical centering */
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
 }
 
+/* Each column (sprite, shiny, stats) */
+#flex-wrapper > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Name */
 #poke-name {
-	border-bottom: 1px solid white;
-	color: white;
-	text-align: center;
-	margin-bottom: 30px;
+  border-bottom: 1px solid white;
+  color: white;
+  text-align: center;
+  margin-bottom: 6px;
 }
 
+/* Sub name */
 #poke-subname {
-	text-align: center;
-	font-size: 0.6em;
-	margin-top: -20px;
+  text-align: center;
+  font-size: 0.6em;
+  margin-top: -2px;
+  margin-bottom: 10px;
 }
 
-#poke-pic {
-	position: relative;
-	bottom: 50px;
-	width: 200px;
-	height: auto;
-}
-
-#poke-pic-type {
-	position: relative;
-	bottom: 100px;
-	width: 50px;
-	height: auto;
-}
-
+/* Sprites */
+#poke-pic,
+#shiny-poke-pic,
 #poke-pic-grayscale {
-	position: relative;
-	bottom: 50px;
-	width: 200px;
-	height: auto;
-	filter: grayscale(100%);
+  width: 200px;
+  height: auto;
 }
 
-#poke-pic-grayscale-type {
-	position: relative;
-	bottom: 100px;
-	width: 50px;
-	height: auto;
-	filter: grayscale(100%);
-}
-
+/* Type icons */
 #poke-types {
-	padding: 0px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
 }
 
-#poke-types span {
-	text-decoration: none;
-	display: inline-block;
-	margin-right: 3px;
-	padding: 0px;
+#poke-pic-type,
+#poke-pic-grayscale-type {
+  width: 48px;
+  height: auto;
 }
 
+/* Grayscale mode */
+#poke-pic-grayscale,
+#poke-pic-grayscale-type {
+  filter: grayscale(100%);
+}
+
+/* Stats */
 #poke-wrapper table {
-	line-height: 1em;
+  line-height: 1.2em;
+  border-collapse: collapse;
 }
 
-#poke-wrapper #poke-info{
-	text-align: center;
-}
 #poke-wrapper table tr td {
-	font-size: 12pt;
-	padding: 0px;
-	text-transform: capitalize;
+  font-size: 12pt;
+  padding: 2px 6px;
+  text-transform: capitalize;
+  text-align: left;
 }
 
-#poke-table-name {
-	color: DDD;
-	font-weight: 800;
-	text-align: left;
+#poke-wrapper #poke-info {
+  text-align: center;
+}
+
+/* Flavor text */
+#flavor-text-wrapper {
+  margin-top: 12px;
+  text-align: center;
+}
+
+#poke-types-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
 }
