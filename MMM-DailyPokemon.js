@@ -12,7 +12,7 @@ Module.register("MMM-DailyPokemon", {
 		updateInterval: 86400000, //1 Day
 		grayscale: true,//Turns pokemon image and type images gray to match magic mirror styles
 		minPoke: 1, //Default to all pokemon
-		maxPoke: 802,//Highest number - 802 pokemon currently exist
+		maxPoke: 1025,//Highest number - 802 pokemon currently exist
 		showType: true, //Shows type icons below pokemon's image
 		stats: true,  //Displays pokemon stat table
 		language: "en",
@@ -20,6 +20,7 @@ Module.register("MMM-DailyPokemon", {
 		gbaMode: true, //Changes font to GBA style
 		nameSize: 32, //Changes header size - px
 		flavorText: false,  //Displays flavor text for the pokemon
+		shiny: true,  //Displays shiny version of the pokemon
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
@@ -193,8 +194,18 @@ Module.register("MMM-DailyPokemon", {
 			type2.appendChild(type2Img);
 			types.appendChild(type2);
 		}
-		pokeWrapper.appendChild(types);
 		flexWrapper.appendChild(pokeWrapper);
+
+		// Shiny
+		shinyWrapper = document.createElement("div");
+        if(this.config.shiny){
+            var shinypokePic = document.createElement("img");
+            shinypokePic.src = data.sprites.front_shiny;
+            shinypokePic.id = "shiny-poke-pic";
+
+			shinyWrapper.appendChild(shinypokePic);
+			flexWrapper.appendChild(shinyWrapper);
+		}
 
 		statWrapper = document.createElement("div");
 		//TODO - Add in a stats table
@@ -219,6 +230,8 @@ Module.register("MMM-DailyPokemon", {
 			flexWrapper.appendChild(statWrapper);
 		}
 		wrapper.appendChild(flexWrapper);
+        types.id = "poke-types-row";
+        wrapper.appendChild(types);
 
 		if (this.config.flavorText) {
 			var flavorTextWrapper = document.createElement("div");
